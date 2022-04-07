@@ -6,7 +6,8 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
+    width: 872px;
+    margin: auto;
     
 }
 .topo{
@@ -28,27 +29,47 @@ header{
 }
 .cartas{
     display: flex;
-    width: 872px;
-    justify-content: space-between;
-    
-   
+    flex-wrap: wrap;
+    justify-content: center;
+  
 }
-.carta{
+        
+    
+.carta-back{
+    background-color: red;
+}
+.carta-front{
     width: 117px;
     height: 146px;
     background-color:#A7E9AF ;
     border: 1px solid #99cea8;
     border-radius:5px ;
-    
+    margin-left: 25px;
     margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
+    
+    
+}
+.carta-front:hover{
+    transform: rotateY(180deg);
+    cursor: pointer;
+    transition: background 1s linear;
+    background-color: aqua;
+
 }
 img{ 
     width: 100px;
     height: 100px;
 
 }
+
+
+
 @media(max-width: 600px)  {
+    body{width: auto;}
     .topo{
         text-align: center;  
     }
@@ -58,6 +79,7 @@ img{
     .cartas{
         flex-direction: column;
         width: auto;
+        height: auto;
         
     }
     .carta{

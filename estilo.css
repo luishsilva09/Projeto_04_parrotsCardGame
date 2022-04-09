@@ -1,25 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
-body{
+body {
     background-color: #EEF9BF;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 872px;
     margin: auto;
-    
+
 }
-.topo{
-    
+
+.topo {
+
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color:#75B79E;
-    
+    color: #75B79E;
+
 }
-header{
+
+header {
     font-family: 'Roboto';
     font-size: 56px;
     font-weight: 700;
@@ -27,40 +29,55 @@ header{
     margin-top: 40px;
 
 }
-.cartas{
+
+.jogo-memoria {
+    width: 100%;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-  
-}
-        
-    
-.carta-back{
-    background-color: red;
-}
-.carta-front{
-    width: 117px;
-    height: 146px;
-    background-color:#A7E9AF ;
-    border: 1px solid #99cea8;
-    border-radius:5px ;
-    margin-left: 25px;
-    margin-bottom: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
     
     
-    
-}
-.carta-front:hover{
-    transform: rotateY(180deg);
-    cursor: pointer;
-    transition: background 1s linear;
-    background-color: aqua;
 
 }
-img{ 
+
+.carta {
+    width: 117px;
+    height: 146px;
+    background-color: #A7E9AF;
+    border: 1px solid #99cea8;
+    border-radius: 5px;
+    margin-left: 25px;
+    margin-bottom: 35px;
+    position: relative;
+    transition: transform .5s;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+
+
+}
+.flip{
+    transform: rotateY(180deg);
+}
+
+
+.carta-front,.carta-back {
+    position: absolute;
+    padding: 13px;
+    backface-visibility: hidden;
+    
+}
+.carta-front{
+    transform: rotate(0deg);
+}
+.carta-back{
+    transform: rotateY(180deg);
+}
+
+
+
+img {
     width: 100px;
     height: 100px;
 
@@ -68,23 +85,29 @@ img{
 
 
 
-@media(max-width: 600px)  {
-    body{width: auto;}
-    .topo{
-        text-align: center;  
+@media(max-width: 600px) {
+    body {
+        width: auto;
     }
-    header{
+
+    .topo {
+        text-align: center;
+    }
+
+    header {
         font-size: 36px;
     }
-    .cartas{
+
+    .jogo-memoria {
         flex-direction: column;
         width: auto;
         height: auto;
-        
+
     }
-    .carta{
+
+    .carta {
         margin-left: 0px;
     }
 
-    
+
 }

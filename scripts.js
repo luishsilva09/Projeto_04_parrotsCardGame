@@ -54,8 +54,9 @@ function match(carta1, carta2) {
    if (carta1 === carta2) {
       cartasViradas = []
       acertos++
+
       if(acertos === nCartas/2){
-         fimJogo()
+         setTimeout(fimJogo, 1000)
       }
    } else {
       setTimeout(desvirar, 1000)
@@ -100,7 +101,8 @@ function fimJogo(){
    document.querySelector(".jogo-memoria").innerHTML =''
    
    alert(`Você ganhou em ${nJogadas} jogadas.`);
-   let reinicia = prompt("gostaria de reiniciar a partida 'sim' ou não");
+   let reinicia = prompt("gostaria de reiniciar a partida 'sim' ou 'não'");
+   
    if(reinicia ==="sim"){
       nJogadas = 0
       cartasBack = []
@@ -108,7 +110,7 @@ function fimJogo(){
       acertos = 0
       iniciarjogo()
    }else{
-
+      document.querySelector(".jogo-memoria").innerHTML ='<h1>Obrigado por jogar</h1>'
    }
 }
 

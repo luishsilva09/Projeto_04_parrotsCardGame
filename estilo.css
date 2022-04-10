@@ -29,6 +29,12 @@ header {
     margin-top: 40px;
 
 }
+h1{font-family: 'Roboto';
+    font-size: 36px;
+    font-weight: 700;
+    color: #355a4c;
+
+}
 
 .jogo-memoria {
     width: 100%;

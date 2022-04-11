@@ -3,6 +3,8 @@ let acertos = 0;
 let cartasViradas = [];
 let nJogadas = 0;
 let cartasBack = []
+let seg = 0;
+let min = 0;
 
 const images = [
    "./images/explodyparrot.gif",
@@ -20,10 +22,11 @@ function comparador() {
 
 // inicia o jogo pedindo a quantidade de cartas
 function iniciarjogo() {
-   nCartas = prompt("Qual o numero de cartas? ");
+   nCartas = prompt("Qual o numero de cartas? Apenas numeros pares de (4 ~ 14)");
    while (nCartas < 4 || nCartas % 2 !== 0 || nCartas > 14) {
       nCartas = prompt("Qual o numero de cartas? ");
    }
+   
    adicionarCartas()
 }
 //faço com que a carta clicada vira 
@@ -41,7 +44,7 @@ function clickCarta(element) {
 
 }
 //na segunda carta virada cada variavel recebe o elemento para fazer a comparação
-function segundoClique(element) { 
+function segundoClique(element) {
    let carta1 = cartasViradas[0].querySelector('.back').getAttribute("src")
    let carta2 = cartasViradas[1].querySelector('.back').getAttribute("src")
    match(carta1, carta2)
@@ -55,8 +58,9 @@ function match(carta1, carta2) {
       cartasViradas = []
       acertos++
 
-      if(acertos === nCartas/2){
-         setTimeout(fimJogo, 1000)
+      if (acertos === nCartas / 2) {
+
+         setTimeout(fimJogo, 100)
       }
    } else {
       setTimeout(desvirar, 1000)
@@ -74,14 +78,14 @@ function desvirar() {
 // faço a adição de forma randomica das cartas 
 function adicionarCartas() {
    let cont = 0
-   for (let i = nCartas/2; i > 0; i--){
+   for (let i = nCartas / 2; i > 0; i--) {
       cartasBack.push(images[i])
       cartasBack.push(images[i])
       cartasBack.sort(comparador)
-      
+
    }
-   
-   for (let i = nCartas ; i > 0; i--) {
+
+   for (let i = nCartas; i > 0; i--) {
       let cartas = document.querySelector(".jogo-memoria");
       cartas.innerHTML += `
       <div class="carta" onclick="clickCarta(this)">   
@@ -94,24 +98,51 @@ function adicionarCartas() {
       </div>`
       cont++
    }
-   
+   setInterval(timer,1000)
 }
+//pergunta se o usuario gostaria de jogar novamente
+function fimJogo() {
+   document.querySelector(".jogo-memoria").innerHTML = ''
 
-function fimJogo(){
-   document.querySelector(".jogo-memoria").innerHTML =''
-   
    alert(`Você ganhou em ${nJogadas} jogadas.`);
    let reinicia = prompt("gostaria de reiniciar a partida 'sim' ou 'não'");
-   
-   if(reinicia ==="sim"){
+
+   if (reinicia === "sim") {
       nJogadas = 0
       cartasBack = []
       cartasViradas = []
       acertos = 0
+      seg = 0
+      min = 0
       iniciarjogo()
-   }else{
-      document.querySelector(".jogo-memoria").innerHTML ='<h1>Obrigado por jogar</h1>'
+   } else {
+      document.querySelector(".jogo-memoria").innerHTML = '<h1>Obrigado por jogar</h1>'
+      document.querySelector(".timer").classList.add("esconde")
    }
+}
+// cronometro
+function timer() {
+
+   seg++
+   if (seg < 10) {
+      document.querySelector(".timer .segundos").innerHTML = "0" + seg
+   }
+   if (seg >= 10) {
+      document.querySelector(".timer .segundos").innerHTML = seg
+   }
+   if (seg === 59) {
+      seg = 0
+      min++
+      if (min < 10) {
+         document.querySelector(".timer .minutos").innerHTML = "0" + min
+      } if (min >=10) {
+         document.querySelector(".timer .minutos").innerHTML = "0" + min
+      }else{
+         min =0
+      }
+   }
+
+
 }
 
 iniciarjogo()

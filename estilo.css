@@ -8,6 +8,7 @@ body {
     align-items: center;
     width: 872px;
     margin: auto;
+    
 
 }
 
@@ -88,7 +89,24 @@ img {
     height: 100px;
 
 }
+.timer{
+    border-radius: 0px 0px 10px 10px;
+    height: 40px;
+    background-color: #355a4c;
+    width: 100px;
+    position: fixed;
+    left:center;
+    top: 0;
+    display: flex;
+    align-items:center ;
+    justify-content: center;
+    font-family: 'Roboto';
+    font-size: 30px;
 
+}
+.esconde{
+    display: none;
+}
 
 
 @media(max-width: 600px) {
